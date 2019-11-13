@@ -1,0 +1,41 @@
+ID: SANJAY_HANDSON
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: SANJAY_DB
+   type: hdb
+   path: SANJAY_DB
+   requires:
+    - name: hdi_SANJAY_DB
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name_2}
+
+
+ 
+
+
+    - name: cross-container-service-1
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
+
+
+resources:
+
+ - name: hdi_SANJAY_DB
+   properties:
+      hdi-container-name_2: ${service-name}
+   type: com.sap.xs.hdi-container
+
+
+ - name: cross-container-service-1
+   parameters:
+      service-name: SFLIGHT
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+

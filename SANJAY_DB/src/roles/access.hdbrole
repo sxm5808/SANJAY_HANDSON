@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "access_Sanjay_DB",
+		"schema_privileges": [{
+			"privileges": ["SELECT"]
+		}]
+	}
+}  
